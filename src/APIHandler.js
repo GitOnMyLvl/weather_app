@@ -1,14 +1,15 @@
 class APIHandler {
   constructor(apiKey) {
     this.apiKey = apiKey;
-    this.baseUrl = 'http://api.weatherapi.com/v1/current.json';
+    this.baseUrl = 'http://api.weatherapi.com/v1/forecast.json';
   }
 
   async callApi(location) {
-    const url = `${this.baseUrl}?key=${this.apiKey}&q=${location}&aqi=no`;
+    const url = `${this.baseUrl}?key=${this.apiKey}&q=${location}&days=5&aqi=no`;
     try {
       const response = await fetch(url);
       const data = await response.json();
+      console.log(data);
       return APIHandler.processWeatherData(data);
     } catch (error) {
       return error;
