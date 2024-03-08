@@ -1,7 +1,8 @@
 class SearchForm {
-  constructor(apiHandler, containerId) {
+  constructor(apiHandler, containerId, displayData) {
     this.apiHandler = apiHandler;
     this.container = document.getElementById(containerId);
+    this.displayData = displayData;
   }
 
   createForm() {
@@ -32,7 +33,7 @@ class SearchForm {
     const location = this.input.value;
     try {
       const data = await this.apiHandler.callApi(location);
-      console.log(data);
+      this.displayData(data);
     } catch (error) {
       console.error(error);
     }
