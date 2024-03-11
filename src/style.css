@@ -2,8 +2,29 @@ html{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-body {
+*{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  color: var(--primary-text-color);
+  min-height: 100vh;
+}
+
+
+header, footer{
+  height: 5rem;
+}
+
+header, footer{
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
 }
 
 .app {
@@ -12,7 +33,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  box-sizing: border-box;
+  height: auto;
+  max-width: 100vw;
 }
 
 .weatherCard {
@@ -94,7 +116,8 @@ body {
   width: 30%;
   min-width: 300px;
   -ms-overflow-style: none;
-  scrollbar-width: none; 
+  scrollbar-width: none;
+  padding-bottom: 1rem; 
 }
 
 .hourForecast::-webkit-scrollbar {
