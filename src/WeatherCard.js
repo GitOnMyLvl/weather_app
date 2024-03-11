@@ -17,8 +17,8 @@ class WeatherCard {
       <h2>Location: ${data.city}, ${data.country}</h2>
       <h3>Local Time: ${data.localtime}</h3>
       <p>Temperature: ${data.temp}°C, feels like: ${data.feelsLike}°C</p>
-      <p>Condition: ${data.condition}</p>
-      <img src="${data.icon}" alt="">
+      <p>${data.forecastDays[0].minTemp}°C - ${data.forecastDays[0].maxTemp}°C</p>
+      <img src="${data.icon}" alt="${data.condition}">
       <p>Humidity: ${data.humidity}%</p>
       <p>Wind: ${data.windSpeed} kph, ${data.windDir}</p>
     `;

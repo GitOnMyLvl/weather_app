@@ -6,16 +6,15 @@ class SearchForm {
   }
 
   createForm() {
-    // Create form
     this.form = document.createElement('form');
     this.form.id = 'locationForm';
-    // Create input
+  
     this.input = document.createElement('input');
     this.input.id = 'locationInput';
     this.input.type = 'text';
     this.input.placeholder = 'Enter location';
     this.input.required = true;
-    // Create submit button
+
     this.submit = document.createElement('button');
     this.submit.id = 'locationSubmit';
     this.submit.type = 'submit';
