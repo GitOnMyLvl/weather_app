@@ -11,8 +11,6 @@ class APIHandler {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      // console.log(data);
-      console.log(APIHandler.processWeatherData(data));
       return APIHandler.processWeatherData(data);
     } catch (error) {
       return error;
@@ -45,13 +43,12 @@ class APIHandler {
       };
     });
 
-    const now = new Date();
-    const next23Hours = addHours(now, 23);
+    const next23Hours = addHours(data.location.localtime, 23);
 
     data.forecast.forecastday.forEach((day) => {
       day.hour.forEach((hour) => {
         const hourTime = parseISO(hour.time);
-        if (isWithinInterval(hourTime, { start: now, end: next23Hours })) {
+        if (isWithinInterval(hourTime, { start: data.location.localtime, end: next23Hours })) {
           processedData.forecastHours.push({
             time: hour.time,
             temp: hour.temp_c,

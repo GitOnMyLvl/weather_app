@@ -1,4 +1,4 @@
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 
 class WeatherCard {
   constructor(containerId) {
@@ -16,7 +16,7 @@ class WeatherCard {
       this.weatherCard.innerHTML = '';
     }
 
-    const date = parseISO(data.localtime);
+    const date = new Date(data.localtime);
     const time = format(date, 'HH:mm');
     const day = format(date, 'EEEE').slice(0, 2);
 

@@ -32,10 +32,19 @@ class SearchForm {
     const location = this.input.value;
     try {
       const data = await this.apiHandler.callApi(location);
-      this.displayData(data);
+      if (SearchForm.isValidData(data)) {
+        this.displayData(data);
+      }
     } catch (error) {
       console.error(error);
     }
+  }
+
+  static isValidData(data) {
+    const hasBasicProperties = data && typeof data === 'object' && 'city' in data && 'country' in data && 'temp' in data;
+    const hasForecastDays = data.forecastDays && typeof data.forecastDays === 'object' && [0, 1, 2].every((key) => key in data.forecastDays);
+    const hasForecastHours = Array.isArray(data.forecastHours) && data.forecastHours.length > 0;
+    return hasBasicProperties && hasForecastDays && hasForecastHours;
   }
 }
 

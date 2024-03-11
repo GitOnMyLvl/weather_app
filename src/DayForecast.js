@@ -17,7 +17,7 @@ class DaysForecast {
       this.dayForecast.appendChild(this.dayForecastList);
       this.container.appendChild(this.dayForecast);
     } else {
-      this.dayForecast.innerHTML = '';
+      this.dayForecastList.innerHTML = '';
     }
 
     Object.keys(data.forecastDays).forEach((key) => {

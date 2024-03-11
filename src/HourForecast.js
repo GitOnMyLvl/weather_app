@@ -17,8 +17,6 @@ class HourForecast {
       this.hourForecast.innerHTML = '';
     }
 
-    console.log(data.forecastHours);
-
     data.forecastHours.forEach((hour) => {
       const hourDiv = document.createElement('div');
       const date = parseISO(hour.time);
