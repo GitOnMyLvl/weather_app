@@ -12,6 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+  box-sizing: border-box;
 }
 
 .weatherCard {
@@ -47,6 +48,7 @@ body {
   overflow: hidden;
   width: 30%;
   min-width: 300px;
+
 }
 
 .dayForecastList {
@@ -54,15 +56,56 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  align-items:start;
   padding: 0;
 }
 
 .dayForecastList li {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   width: 100%;
   padding: 0.5rem;
+}
+
+.dayForecastList li span:first-child {
+  justify-self: start;
+}
+
+.dayForecastList li span:nth-child(2) {
+  justify-self: center;
+}
+
+.dayForecastList li span:last-child, .dayForecastList li img:last-of-type {
+  justify-self: end;
+}
+
+.hourForecast {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: start;
+  gap: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  background-color: black;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem;
+  width: 30%;
+  min-width: 300px;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.hourForecast::-webkit-scrollbar {
+  display: none;
+}
+
+.hourForecast.active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.hourForecast img {
+  pointer-events: none;
 }
