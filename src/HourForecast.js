@@ -1,13 +1,14 @@
 class HourForecast {
-  constructor(containerId){
+  constructor(containerId) {
     this.container = document.getElementById(containerId);
-    this.hourForecast = null
+    this.hourForecast = null;
   }
 
-  updateHourForecast(data){
-    if (!this.hourForecast){
+  updateHourForecast(data) {
+    if (!this.hourForecast) {
       this.hourForecast = document.createElement('div');
       this.hourForecast.id = 'hourForecast';
+      this.hourForecast.classList.add('hourForecast');
       this.container.appendChild(this.hourForecast);
     } else {
       this.hourForecast.innerHTML = '';

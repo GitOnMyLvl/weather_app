@@ -1,3 +1,5 @@
+import { parseISO, format } from 'date-fns';
+
 class WeatherCard {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
@@ -8,19 +10,26 @@ class WeatherCard {
     if (!this.weatherCard) {
       this.weatherCard = document.createElement('div');
       this.weatherCard.id = 'weatherCard';
+      this.weatherCard.classList.add('weatherCard');
       this.container.appendChild(this.weatherCard);
     } else {
       this.weatherCard.innerHTML = '';
     }
 
+    const date = parseISO(data.localtime);
+    const time = format(date, 'HH:mm');
+    const day = format(date, 'EEEE').slice(0, 2);
+
     this.weatherCard.innerHTML = `
-      <h2>Location: ${data.city}, ${data.country}</h2>
-      <h3>Local Time: ${data.localtime}</h3>
-      <p>Temperature: ${data.temp}°C, feels like: ${data.feelsLike}°C</p>
-      <p>${data.forecastDays[0].minTemp}°C - ${data.forecastDays[0].maxTemp}°C</p>
-      <img src="${data.icon}" alt="${data.condition}">
+      <div class="tempAndImg">
+        <h2>${data.temp}°</h2>
+        <img src="${data.icon}" alt="${data.condition}">
+      </div>
+      <p>${data.city}, ${data.country}</p>
+       <p>${data.forecastDays[0].maxTemp}° / ${data.forecastDays[0].minTemp}° feels like: ${data.feelsLike}°</p>
+      <p>${day}. , ${time}</p>
       <p>Humidity: ${data.humidity}%</p>
-      <p>Wind: ${data.windSpeed} kph, ${data.windDir}</p>
+      <p>Wind: ${data.windSpeed} kph</p>
     `;
   }
 }

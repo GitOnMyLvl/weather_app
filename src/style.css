@@ -17,10 +17,52 @@ body {
 .weatherCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  align-items: start;
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  color: white;
+  background-color: black;
+  width: 30%;
+  min-width: 300px;
+}
+
+.tempAndImg {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dayForecast{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  overflow: hidden;
+  width: 30%;
+  min-width: 300px;
+}
+
+.dayForecastList {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items:start;
+  padding: 0;
+}
+
+.dayForecastList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
 }

@@ -45,7 +45,7 @@ class APIHandler {
       };
     });
 
-    let now = new Date();
+    const now = new Date();
     const next23Hours = addHours(now, 23);
 
     data.forecast.forecastday.forEach((day) => {

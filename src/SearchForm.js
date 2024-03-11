@@ -8,7 +8,7 @@ class SearchForm {
   createForm() {
     this.form = document.createElement('form');
     this.form.id = 'locationForm';
-  
+
     this.input = document.createElement('input');
     this.input.id = 'locationInput';
     this.input.type = 'text';

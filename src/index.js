@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const weatherCard = new WeatherCard('app');
   const daysForecast = new DaysForecast('app');
   const hourForecast = new HourForecast('app');
-  const testData = weatherApiHandler.callApi('London').then((data) => updateAllModules(data));
 
   const updateAllModules = (data) => {
     weatherCard.updateWeather(data);
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hourForecast.updateHourForecast(data);
   };
 
-
   const searchForm = new SearchForm(weatherApiHandler, 'app', updateAllModules);
   searchForm.createForm();
+  weatherApiHandler.callApi('London').then((data) => updateAllModules(data));
 });
