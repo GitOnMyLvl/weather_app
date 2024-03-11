@@ -1,3 +1,5 @@
+import { addHours, isWithinInterval, parseISO } from 'date-fns';
+
 class APIHandler {
   constructor(apiKey) {
     this.apiKey = apiKey;
@@ -5,11 +7,12 @@ class APIHandler {
   }
 
   async callApi(location) {
-    const url = `${this.baseUrl}?key=${this.apiKey}&q=${location}&days=5&aqi=no`;
+    const url = `${this.baseUrl}?key=${this.apiKey}&q=${location}&days=3&aqi=no`;
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
+      console.log(APIHandler.processWeatherData(data));
       return APIHandler.processWeatherData(data);
     } catch (error) {
       return error;
@@ -17,7 +20,7 @@ class APIHandler {
   }
 
   static processWeatherData(data) {
-    return {
+    const processedData = {
       country: data.location.country,
       city: data.location.name,
       localtime: data.location.localtime,
@@ -28,7 +31,38 @@ class APIHandler {
       humidity: data.current.humidity,
       windSpeed: data.current.wind_kph,
       windDir: data.current.wind_dir,
+      forecastDays: {},
+      forecastHours: [],
     };
+
+    data.forecast.forecastday.forEach((day, index) => {
+      processedData.forecastDays[index] = {
+        date: day.date,
+        maxTemp: day.day.maxtemp_c,
+        minTemp: day.day.mintemp_c,
+        condition: day.day.condition.text,
+        icon: `https:${day.day.condition.icon}`,
+      };
+    });
+
+    let now = new Date();
+    const next23Hours = addHours(now, 23);
+
+    data.forecast.forecastday.forEach((day) => {
+      day.hour.forEach((hour) => {
+        const hourTime = parseISO(hour.time);
+        if (isWithinInterval(hourTime, { start: now, end: next23Hours })) {
+          processedData.forecastHours.push({
+            time: hour.time,
+            temp: hour.temp_c,
+            condition: hour.condition.text,
+            icon: `https:${hour.condition.icon}`,
+          });
+        }
+      });
+    });
+
+    return processedData;
   }
 }
 
