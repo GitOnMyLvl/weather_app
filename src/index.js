@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updateAllModules = (data) => {
     weatherCard.updateWeather(data);
-    daysForecast.updateDayForecast(data);
     hourForecast.updateHourForecast(data);
+    daysForecast.updateDayForecast(data);
   };
 
   const searchForm = new SearchForm(weatherApiHandler, 'app', updateAllModules, displayError);

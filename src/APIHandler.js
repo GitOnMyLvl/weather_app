@@ -3,7 +3,7 @@ import { addHours, isWithinInterval, parseISO } from 'date-fns';
 class APIHandler {
   constructor(apiKey, displayError) {
     this.apiKey = apiKey;
-    this.baseUrl = 'http://api.weatherapi.com/v1/forecast.json';
+    this.baseUrl = 'https://api.weatherapi.com/v1/forecast.json';
     this.displayError = displayError;
   }
 
