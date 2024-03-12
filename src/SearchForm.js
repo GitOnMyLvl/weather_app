@@ -1,22 +1,26 @@
 class SearchForm {
-  constructor(apiHandler, containerId, displayData) {
+  constructor(apiHandler, containerId, displayData, displayError) {
     this.apiHandler = apiHandler;
     this.container = document.getElementById(containerId);
     this.displayData = displayData;
+    this.displayError = displayError;
   }
 
   createForm() {
     this.form = document.createElement('form');
     this.form.id = 'locationForm';
+    this.form.classList.add('locationForm');
 
     this.input = document.createElement('input');
     this.input.id = 'locationInput';
+    this.input.classList.add('locationInput');
     this.input.type = 'text';
     this.input.placeholder = 'Enter location';
     this.input.required = true;
 
     this.submit = document.createElement('button');
     this.submit.id = 'locationSubmit';
+    this.submit.classList.add('locationSubmit');
     this.submit.type = 'submit';
     this.submit.textContent = 'Search';
 
@@ -36,7 +40,7 @@ class SearchForm {
         this.displayData(data);
       }
     } catch (error) {
-      console.error(error);
+      this.displayError(error);
     }
   }
 

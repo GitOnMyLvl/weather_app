@@ -1,9 +1,10 @@
 import { addHours, isWithinInterval, parseISO } from 'date-fns';
 
 class APIHandler {
-  constructor(apiKey) {
+  constructor(apiKey, displayError) {
     this.apiKey = apiKey;
     this.baseUrl = 'http://api.weatherapi.com/v1/forecast.json';
+    this.displayError = displayError;
   }
 
   async callApi(location) {
@@ -13,7 +14,8 @@ class APIHandler {
       const data = await response.json();
       return APIHandler.processWeatherData(data);
     } catch (error) {
-      return error;
+      this.displayError(error);
+      return null;
     }
   }
 

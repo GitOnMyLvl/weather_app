@@ -1,3 +1,12 @@
+:root{
+  --primary-color: #0a488e;
+  --primary-text-color: #FFFFFF;
+  --secondary-color: #4A90E2;
+  --secondary-text-color: #ccc;
+  --tertiary-color: #2572ca;
+  --alert-color: #ff0000;
+}
+
 html{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
@@ -11,6 +20,8 @@ html{
 body{
   color: var(--primary-text-color);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -31,11 +42,52 @@ header, footer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 1.5rem;
   height: auto;
   max-width: 100vw;
+  font-size: 1.2rem;
+  background-color: var(--secondary-color);
+  padding: 1.5rem 0;
+  flex: 1;
 }
+
+.locationForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 30%;
+  min-width: 350px;
+}
+
+.locationInput {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--secondary-text-color); 
+  outline: none; 
+  flex: 1; 
+}
+
+.locationInput:focus {
+  border-color: var(--primary-color); 
+}
+
+.locationSubmit {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none; 
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  transition: background-color 0.3s ease;
+}
+
+.locationSubmit:hover {
+  background-color: var(--tertiary-color);
+}
+
+
 
 .weatherCard {
   display: flex;
@@ -44,17 +96,26 @@ header, footer{
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: white;
-  background-color: black;
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
   width: 30%;
-  min-width: 300px;
+  min-width: 350px;
 }
 
-.tempAndImg {
+.weatherCard .tempAndImg {
   display: flex;
   width: 100%;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.weatherCard .tempAndImg h2 {
+  font-size: 2rem;
+  align-self: center;
+}
+
+.weatherCard p {
+  margin: 0.5rem 0;
 }
 
 .dayForecast{
@@ -64,12 +125,12 @@ header, footer{
   gap: 0.5rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: white;
-  background-color: black;
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
   padding: 1rem;
   overflow: hidden;
   width: 30%;
-  min-width: 300px;
+  min-width: 350px;
 
 }
 
@@ -108,13 +169,13 @@ header, footer{
   gap: 0.5rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: white;
-  background-color: black;
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
   overflow-x: auto;
   overflow-y: hidden;
   padding: 1rem;
   width: 30%;
-  min-width: 300px;
+  min-width: 350px;
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-bottom: 1rem; 
@@ -131,4 +192,31 @@ header, footer{
 
 .hourForecast img {
   pointer-events: none;
+}
+
+.hourForecast .hourDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.alertBox{
+ position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  width: 30%;
+  padding: 1rem;
+  background-color: var(--alert-color);
+  color: var(--primary-text-color);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 1000;
+}
+
+.hidden{
+  display: none;
 }
