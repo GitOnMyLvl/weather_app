@@ -58,19 +58,55 @@ header, footer{
   align-items: center;
   gap: 0.5rem;
   width: 30%;
-  min-width: 350px;
+  min-width: 350px;;
+  color: var(--primary-text-color);
+}
+
+.inputWrapper {
+  position: relative;
+  flex: 1;
 }
 
 .locationInput {
+  width: 100%;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--secondary-text-color); 
+  border: none; 
   outline: none; 
-  flex: 1; 
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+}
+
+::placeholder {
+  color: var(--secondary-text-color);
 }
 
 .locationInput:focus {
   border-color: var(--primary-color); 
+}
+
+.suggestionField {
+  position: absolute;
+  background-color: var( --primary-color);
+  font-size: 0.8rem;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-radius: 0.5rem;
+  color: var(--primary-text-color);
+  margin-top: 0.1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.suggestion {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.suggestion:hover {
+  background-color: var(--tertiary-color);
+  border-radius: 0.5rem;
 }
 
 .locationSubmit {

@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const daysForecast = new DaysForecast('app');
   const hourForecast = new HourForecast('app');
 
-  const displayError = (error) => {
-    const message = error.message || "Couldn't fetch data";
+  const displayError = () => {
+    const message = "Couldn't fetch data";
     alertBox.showAlert(message);
   };
 

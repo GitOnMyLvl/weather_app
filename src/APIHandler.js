@@ -3,12 +3,12 @@ import { addHours, isWithinInterval, parseISO } from 'date-fns';
 class APIHandler {
   constructor(apiKey, displayError) {
     this.apiKey = apiKey;
-    this.baseUrl = 'https://api.weatherapi.com/v1/forecast.json';
+    this.baseUrl = 'https://api.weatherapi.com/v1/';
     this.displayError = displayError;
   }
 
   async callApi(location) {
-    const url = `${this.baseUrl}?key=${this.apiKey}&q=${location}&days=3&aqi=no`;
+    const url = `${this.baseUrl}forecast.json?key=${this.apiKey}&q=${location}&days=3&aqi=no`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -17,6 +17,15 @@ class APIHandler {
       this.displayError(error);
       return null;
     }
+  }
+
+  async fetchSuggestions(query) {
+    const url = `${this.baseUrl}search.json?key=${this.apiKey}&q=${query}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Failed to fetch suggestions');
+    }
+    return response.json();
   }
 
   static processWeatherData(data) {
