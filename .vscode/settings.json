@@ -1,0 +1,7 @@
+{
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 2
+}
